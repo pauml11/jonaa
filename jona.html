@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti ❤️ Jonathan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #7e22ce 50%, #c026d3 75%, #f43f5e 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            z-index: 1;
+        }
+
+        .heart {
+            position: relative;
+            width: 350px;
+            height: 315px;
+            margin: 0 auto;
+            animation: heartbeat 1.2s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(255, 23, 68, 0.8));
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 175px;
+            height: 280px;
+            background: linear-gradient(135deg, #ff1744 0%, #ff6b9d 50%, #ff1744 100%);
+            border-radius: 175px 175px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+            box-shadow: 
+                0 0 40px rgba(255, 23, 68, 0.8),
+                inset 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .heart::before {
+            left: 175px;
+        }
+
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 
+                2px 2px 8px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(255, 255, 255, 0.5);
+            z-index: 10;
+            white-space: nowrap;
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        .subtitle {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 18px;
+            font-style: italic;
+            text-align: center;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+            white-space: nowrap;
+            margin-top: 50px;
+            animation: fadeInOut 3s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            8% {
+                transform: scale(1.05);
+            }
+            16% {
+                transform: scale(1);
+            }
+            24% {
+                transform: scale(1.05);
+            }
+            32%, 100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                text-shadow: 
+                    2px 2px 8px rgba(0, 0, 0, 0.5),
+                    0 0 20px rgba(255, 255, 255, 0.5);
+            }
+            50% {
+                text-shadow: 
+                    2px 2px 8px rgba(0, 0, 0, 0.5),
+                    0 0 30px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0.7;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="container">
+        <div class="heart"></div>
+        <div class="text">Te amo</div>
+        <div class="subtitle">Danna</div>
+    </div>
+
+    <script>
+        // Crear estrellas animadas
+        const starsContainer = document.getElementById('stars');
+        const numStars = 50;
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
